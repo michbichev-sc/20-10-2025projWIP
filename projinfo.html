@@ -35,47 +35,36 @@
 <body>
 
     <h1>Интерактивная информатика</h1>
-
-    <!-- Перевод из двоичной в десятичную -->
     <div class="section">
         <h3>1. Перевод из двоичной в десятичную</h3>
         <input id="binaryInput" placeholder="Введите двоичное число (например 1011)">
         <button onclick="binaryToDecimal()">Перевести</button>
         <div id="binaryResult" class="result"></div>
     </div>
-
-    <!-- Перевод из десятичной в двоичную -->
     <div class="section">
         <h3>2. Перевод из десятичной в двоичную</h3>
         <input id="decimalInput" placeholder="Введите десятичное число (например 13)">
         <button onclick="decimalToBinary()">Перевести</button>
         <div id="decimalResult" class="result"></div>
     </div>
-
-    <!-- Пузырьковая сортировка -->
     <div class="section">
-        <h3>3. Пузырьковая сортировка</h3>
+        <h3>3. Пузырьковая сортировка (Bubble Sort)</h3>
         <input id="arrayInput" placeholder="Введите числа через запятую (например 5,3,8,1)">
         <button onclick="bubbleSort()">Сортировать</button>
         <div id="sortResult" class="result"></div>
     </div>
-
-    <!-- Факториал -->
     <div class="section">
         <h3>4. Факториал числа</h3>
         <input id="factInput" placeholder="Введите число (например 5)">
         <button onclick="calcFactorial()">Посчитать</button>
         <div id="factResult" class="result"></div>
     </div>
-
-    <!-- Проверка простоты числа -->
     <div class="section">
         <h3>5. Проверка, простое ли число</h3>
         <input id="primeInput" placeholder="Введите число (например 7)">
         <button onclick="checkPrime()">Проверить</button>
         <div id="primeResult" class="result"></div>
     </div>
-
     <script>
         function binaryToDecimal() {
             let bin = document.getElementById('binaryInput').value.trim();
@@ -142,3 +131,4 @@
 
 </body>
 </html>
+
