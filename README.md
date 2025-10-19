@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Интерактивная информатика</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .section {
+            background: white;
+            padding: 15px;
+            margin: 20px auto;
+            border-radius: 10px;
+            width: 400px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
+        }
+        input, button {
+            margin: 5px 0;
+            padding: 5px;
+            width: 100%;
+        }
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Интерактивная информатика</h1>
+
+    <!-- Перевод из двоичной в десятичную -->
+    <div class="section">
+        <h3>1. Перевод из двоичной в десятичную</h3>
+        <input id="binaryInput" placeholder="Введите двоичное число (например 1011)">
+        <button onclick="binaryToDecimal()">Перевести</button>
+        <div id="binaryResult" class="result"></div>
+    </div>
+
+    <!-- Перевод из десятичной в двоичную -->
+    <div class="section">
+        <h3>2. Перевод из десятичной в двоичную</h3>
+        <input id="decimalInput" placeholder="Введите десятичное число (например 13)">
+        <button onclick="decimalToBinary()">Перевести</button>
+        <div id="decimalResult" class="result"></div>
+    </div>
+
+    <!-- Пузырьковая сортировка -->
+    <div class="section">
+        <h3>3. Пузырьковая сортировка</h3>
+        <input id="arrayInput" placeholder="Введите числа через запятую (например 5,3,8,1)">
+        <button onclick="bubbleSort()">Сортировать</button>
+        <div id="sortResult" class="result"></div>
+    </div>
+
+    <!-- Факториал -->
+    <div class="section">
+        <h3>4. Факториал числа</h3>
+        <input id="factInput" placeholder="Введите число (например 5)">
+        <button onclick="calcFactorial()">Посчитать</button>
+        <div id="factResult" class="result"></div>
+    </div>
+
+    <!-- Проверка простоты числа -->
+    <div class="section">
+        <h3>5. Проверка, простое ли число</h3>
+        <input id="primeInput" placeholder="Введите число (например 7)">
+        <button onclick="checkPrime()">Проверить</button>
+        <div id="primeResult" class="result"></div>
+    </div>
+
+    <script>
+        function binaryToDecimal() {
+            let bin = document.getElementById('binaryInput').value.trim();
+            if (!/^[01]+$/.test(bin)) {
+                document.getElementById('binaryResult').innerText = "Ошибка: введите только 0 и 1!";
+                return;
+            }
+            let dec = parseInt(bin, 2);
+            document.getElementById('binaryResult').innerText = "Десятичное число: " + dec;
+        }
+
+        function decimalToBinary() {
+            let dec = parseInt(document.getElementById('decimalInput').value);
+            if (isNaN(dec)) {
+                document.getElementById('decimalResult').innerText = "Введите корректное число!";
+                return;
+            }
+            let bin = dec.toString(2);
+            document.getElementById('decimalResult').innerText = "Двоичное число: " + bin;
+        }
+
+        function bubbleSort() {
+            let input = document.getElementById('arrayInput').value;
+            let arr = input.split(',').map(x => parseFloat(x.trim())).filter(x => !isNaN(x));
+            for (let i = 0; i < arr.length - 1; i++) {
+                for (let j = 0; j < arr.length - i - 1; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        let temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+            document.getElementById('sortResult').innerText = "Отсортированный массив: " + arr.join(', ');
+        }
+
+        function calcFactorial() {
+            let n = parseInt(document.getElementById('factInput').value);
+            if (isNaN(n) || n < 0) {
+                document.getElementById('factResult').innerText = "Введите неотрицательное число!";
+                return;
+            }
+            let result = 1;
+            for (let i = 1; i <= n; i++) result *= i;
+            document.getElementById('factResult').innerText = "Факториал: " + result;
+        }
+
+        function checkPrime() {
+            let n = parseInt(document.getElementById('primeInput').value);
+            if (isNaN(n) || n < 2) {
+                document.getElementById('primeResult').innerText = "Введите число больше 1!";
+                return;
+            }
+            let isPrime = true;
+            for (let i = 2; i <= Math.sqrt(n); i++) {
+                if (n % i === 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+            document.getElementById('primeResult').innerText = isPrime ? "Число простое ✅" : "Число не простое ❌";
+        }
+    </script>
+
+</body>
+</html>
